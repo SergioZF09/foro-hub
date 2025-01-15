@@ -50,9 +50,10 @@ Importante: no puede haber registros de tópicos duplicados (con el mismo títul
 3. **Listar un tópico**: Muestra sólo un tópico pasando el id como parámetro en la URI.
 4. **Actualizar un tópico**: Actualiza uno o varios datos de un tópico y no permite que los datos estén vacíos o nulos. Se debe usar el id en el body de Postman o Insomnia Rest para realizar la actualización.
 5. **Eliminar un tópico**: Elimina un tópico pasando el id como parámetro en la URI.
-6. **Inicio de sesión (Login)**: Inicia sesión ingresando el nombre de usuario y la contraseña, y al enviarlos devuelve un JWT Token con el cual podrá usar las operaciones CRUD.
-7. **Conexión a la base de datos**: Toda la información se guarda en una base de datos de MySQL.
-8. **Respuestas con códigos HTTP**: Al realizar alguna operación CRUD en Postman o Insomnia, muestra su código HTTP correcto, por ejemplo, al crear un tópico devuelve 201, si no existe un tópico devuelve 404, etc.
+6. **Conexión a la base de datos**: Toda la información se guarda en una base de datos de MySQL.
+7. **Respuestas con códigos HTTP**: Al realizar alguna operación CRUD en Postman o Insomnia, muestra su código HTTP correcto, por ejemplo, al crear un tópico devuelve 201, si no existe un tópico devuelve 404, etc.
+8. **Seguridad en operaciones CRUD**: La aplicación tiene Spring Security para que los usuarios que no iniciaron sesión no puedan usar las operaciones CRUD.
+9. **Inicio de sesión (Login)**: Inicia sesión ingresando el nombre de usuario y la contraseña, y al enviarlos devuelve un JWT Token con el cual podrá usar las operaciones CRUD.
 
 # Teconologías utilizadas :hammer:
 
@@ -65,6 +66,7 @@ Importante: no puede haber registros de tópicos duplicados (con el mismo títul
 - Lombok
 - Flyway Migration
 - Validation
+- Spring Security
 - Postman o Insomnia Rest para la simulación del cliente
 - MySQL Workbench
 
