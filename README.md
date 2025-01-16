@@ -47,16 +47,34 @@ Se debe usar alguna herramienta/aplicación como Postman o Insomnia Rest para si
 ## Funcionalidades del proyecto 🔧
 
 1. **Registrar tópico**: Registra en la base de datos un tópico con los siguientes datos: título, mensaje, fecha de creación, estado, autor y curso.
-Importante: no puede haber registros de tópicos duplicados (con el mismo título y mensaje).
+
+    ⚠️ Importante: no puede haber registros de tópicos duplicados (con el mismo título y mensaje).
+
 2. **Listar tópicos**: Muestra todos los tópicos que fueron registrados en la base de datos.
 3. **Listar un tópico**: Muestra sólo un tópico pasando el id como parámetro en la URI.
 4. **Actualizar un tópico**: Actualiza uno o varios datos de un tópico y no permite que los datos estén vacíos o nulos. Se debe usar el id en el body de Postman o Insomnia Rest para realizar la actualización.
 5. **Eliminar un tópico**: Elimina un tópico pasando el id como parámetro en la URI.
 6. **Conexión a la base de datos**: Toda la información se guarda en una base de datos de MySQL.
+
+    ⚠️ Importante: Es necesario crear la base de datos y modificar el archivo application.properties. Esto es para que se conecte la aplicación a la base de datos.
+    Se deben modificar las siguientes variables por las variables que tu tengas:
+
+    `${DATASOURCE_URL}, ${DATASOURCE_USERNAME}, ${DATASOURCE_PASSWORD} y ${JWT_SECRET}`
+
+    En DATASOURCE_URL debe estar de esta forma: `jdbc:mysql://localhost:puerto que use)/(nombre de la base de datos)`.
+    
+    En DATASOURCE_USERNAME debe ser por defecto root o el que se introdujo al instalar MySQL Workbench.
+
+    En DATASOURCE_PASSWORD debe ser la contraseña que se introdujo al instalar MySQL Workbench.
+
+    Y en JWT_SECRET es la contraseña que se usa para el inicio de sesión.
+
+Se deben modificar las siguientes variables por las variables que tu tengas:
 7. **Respuestas con códigos HTTP**: Al realizar alguna operación CRUD en Postman o Insomnia, muestra su código HTTP correcto, por ejemplo, al crear un tópico devuelve 201, si no existe un tópico devuelve 404, etc.
 8. **Seguridad en operaciones CRUD**: La aplicación tiene Spring Security para que los usuarios que no iniciaron sesión no puedan usar las operaciones CRUD.
 9. **Inicio de sesión (Login)**: Inicia sesión ingresando el nombre de usuario y la contraseña, y al enviarlos devuelve un JWT Token con el cual podrá usar las operaciones CRUD.
-Importante: Es necesario introducir la información del usuario en la base de datos para realizar correctamente el login. Y para introducir la contraseña encriptada se debe usar la siguiente página: [Bcrypt Encrypt](https://www.browserling.com/tools/bcrypt), donde dice Password introduce la contraseña a usar, dar click en Bcrypt y en el campo cuadrado mostrará dicha contraseña ya encriptada.
+
+    ⚠️ Importante: Es necesario introducir la información del usuario en la base de datos para realizar correctamente el login. Y para introducir la contraseña encriptada se debe usar la siguiente página: [Bcrypt Encrypt](https://www.browserling.com/tools/bcrypt), donde dice Password introduce la contraseña a usar, dar click en Bcrypt y en el campo cuadrado mostrará dicha contraseña ya encriptada.
 
 # Teconologías utilizadas 🔨
 
