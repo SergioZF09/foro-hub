@@ -1,12 +1,14 @@
-<h1>:speech_balloon: ForoHub :speech_balloon:</h1>
+<h1>💬 ForoHub API Rest 💬</h1>
 
 # Insignias
 
 <div align="center">
     <img src="https://img.shields.io/badge/Estado-En desarrollo-green">
     <img src="https://img.shields.io/badge/Java-v17-blue">
-    <img src="https://img.shields.io/badge/Base de Datos-PostreSQL-blue">
-    <img src="https://img.shields.io/badge/Framework-Spring Boot 3-blue">
+    <img src="https://img.shields.io/badge/Framework-Spring Boot 3-green">
+    <img src="https://img.shields.io/badge/Base de Datos-MySQL-blue">
+    <img src="https://img.shields.io/badge/ORM-Hibernate-blue">
+    <img src="https://img.shields.io/badge/Autenticación-JWT-blue">
     <img src="https://img.shields.io/badge/Versión-v1.0.0-green">
 </div>
 
@@ -30,7 +32,7 @@
 
 - [Persona Desarrolladora del Proyecto](#persona-desarrolladora-del-proyecto)
 
-# Descripción del proyecto :page_facing_up:
+# Descripción del proyecto 📄
 
 ¡Bienvenido/a a ForoHub!
 Es una aplicación API Rest CRUD en la que puedes crear un tópico, leer todos los tópicos creados, leer un tópico en específico, actualizar algún datos de un tópico y eliminar un tópico, con tópico me refiero a una duda de algún tema en específico, los tópicos se guardan en una base de datos el cual es MySQL Workbench, ya que usa Flyway Migration para controlar las versiones de consultas con archivos SQL. 
@@ -38,11 +40,11 @@ Se debe usar alguna herramienta/aplicación como Postman o Insomnia Rest para si
 
 # Estado del proyecto
 
-:construction: Proyecto en desarrollo.
+✅ Proyecto completado.
 
 # Demostración de funcionalidades
 
-## Funcionalidades del proyecto :wrench:
+## Funcionalidades del proyecto 🔧
 
 1. **Registrar tópico**: Registra en la base de datos un tópico con los siguientes datos: título, mensaje, fecha de creación, estado, autor y curso.
 Importante: no puede haber registros de tópicos duplicados (con el mismo título y mensaje).
@@ -54,8 +56,9 @@ Importante: no puede haber registros de tópicos duplicados (con el mismo títul
 7. **Respuestas con códigos HTTP**: Al realizar alguna operación CRUD en Postman o Insomnia, muestra su código HTTP correcto, por ejemplo, al crear un tópico devuelve 201, si no existe un tópico devuelve 404, etc.
 8. **Seguridad en operaciones CRUD**: La aplicación tiene Spring Security para que los usuarios que no iniciaron sesión no puedan usar las operaciones CRUD.
 9. **Inicio de sesión (Login)**: Inicia sesión ingresando el nombre de usuario y la contraseña, y al enviarlos devuelve un JWT Token con el cual podrá usar las operaciones CRUD.
+Importante: Es necesario introducir la información del usuario en la base de datos para realizar correctamente el login. Y para introducir la contraseña encriptada se debe usar la siguiente página: [Bcrypt Encrypt](https://www.browserling.com/tools/bcrypt), donde dice Password introduce la contraseña a usar, dar click en Bcrypt y en el campo cuadrado mostrará dicha contraseña ya encriptada.
 
-# Teconologías utilizadas :hammer:
+# Teconologías utilizadas 🔨
 
 - Java 17
 - Spring Boot 3
@@ -70,7 +73,7 @@ Importante: no puede haber registros de tópicos duplicados (con el mismo títul
 - Postman o Insomnia Rest para la simulación del cliente
 - MySQL Workbench
 
-# Persona Desarrolladora del Proyecto :computer:
+# Persona Desarrolladora del Proyecto 💻
 
 [<img src="https://avatars.githubusercontent.com/u/107082359?v=4" width=115><br><sub>Sergio Zuñiga Fraga</sub>](https://github.com/SergioZF09)
 
