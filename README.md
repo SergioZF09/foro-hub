@@ -35,7 +35,7 @@
 # Descripción del proyecto 📄
 
 ¡Bienvenido/a a ForoHub!
-Es una aplicación API Rest CRUD en la que puedes crear un tópico, leer todos los tópicos creados, leer un tópico en específico, actualizar algún datos de un tópico y eliminar un tópico, con tópico me refiero a una duda de algún tema en específico, los tópicos se guardan en una base de datos el cual es MySQL Workbench, ya que usa Flyway Migration para controlar las versiones de consultas con archivos SQL. 
+Es una aplicación API Rest CRUD en la que puedes crear un tópico, leer todos los tópicos creados, leer un tópico en específico, actualizar algún dato de un tópico y eliminar un tópico, con tópico me refiero a una duda de algún tema en específico, los tópicos se guardan en una base de datos el cual es MySQL Workbench, ya que usa Flyway Migration para controlar las versiones de consultas con archivos SQL. 
 Se debe usar alguna herramienta/aplicación como Postman o Insomnia Rest para simular las solicitudes (requests) y respuestas (responses) de un cliente a la API y de la API a la base de datos con los verbos HTTP: Create para crear, GET para leer, PUT para actualizar y DELETE para eliminar, y para las operaciones CRUD se usa el formato JSON.
 
 # Estado del proyecto
