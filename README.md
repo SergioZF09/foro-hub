@@ -22,7 +22,7 @@
 
 - [Demostración de funcionalidades](#demostración-de-funcionalidades)
 
-    - [Funcionalidades del proyecto](#funcionalidades-del-proyecto)
+    - [Funcionalidades del proyecto](#funcionalidades-del-proyecto-🔧)
 
     - [Uso del proyecto](#uso-del-proyecto)
 
@@ -53,10 +53,60 @@ Se debe usar alguna herramienta/aplicación como Postman o Insomnia Rest para si
 2. **Listar tópicos**: Muestra todos los tópicos que fueron registrados en la base de datos.
 3. **Listar un tópico**: Muestra sólo un tópico pasando el id como parámetro en la URI.
 4. **Actualizar un tópico**: Actualiza uno o varios datos de un tópico y no permite que los datos estén vacíos o nulos. Se debe usar el id en el body de Postman o Insomnia Rest para realizar la actualización.
+También sucede como en Registrar tópico de que no acepta datos de tópicos duplicados.
 5. **Eliminar un tópico**: Elimina un tópico pasando el id como parámetro en la URI.
 6. **Conexión a la base de datos**: Toda la información se guarda en una base de datos de MySQL.
+7. **Respuestas con códigos HTTP**: Al realizar alguna operación CRUD en Postman o Insomnia, muestra su código HTTP correcto, por ejemplo, al crear un tópico devuelve 201, si no existe un tópico devuelve 404, etc.
+8. **Seguridad en operaciones CRUD**: La aplicación tiene Spring Security para que los usuarios que no iniciaron sesión no puedan usar las operaciones CRUD.
+9. **Inicio de sesión (Login)**: Inicia sesión ingresando el nombre de usuario y la contraseña, y al enviarlos devuelve un JWT Token con el cual podrá usar las operaciones CRUD.
 
-    ⚠️ Importante: Es necesario crear la base de datos y modificar el archivo application.properties. Esto es para que se conecte la aplicación a la base de datos.
+    ⚠️ Importante: Es necesario introducir la información del usuario en la base de datos para realizar correctamente el login. Y para introducir la contraseña encriptada se debe usar la siguiente página: [Bcrypt Encrypt](https://www.browserling.com/tools/bcrypt), donde dice Password introduce la contraseña a usar, dar click en Bcrypt y en el campo cuadrado mostrará dicha contraseña ya encriptada.
+
+10. **Documentación de la API Rest ForoHub**: Incluye una documentación para probar su funcionamiento usando Spring Doc con Swagger. De igual forma, para usar las operaciones CRUD hay que hacer login.
+
+## Uso del Proyecto
+
+**Login**: Para iniciar sesión es necesario registrar al usuario desde la base de datos usando el siguiente comando, sustituyendo los valores por otros y la contraseña hasheada en la página Bcrypt Encrypt:
+`INSERT INTO usuarios (nombre, correo_electronico, contrasena) VALUES ('carlos.garcia', 'carlos.garcia@gmail.com', '123456');`
+
+Para la ruta `http://localhost:8080/login` usando el verbo POST se usa el siguiente ejemplo:
+````
+{
+  "nombre": "string",
+  "contrasena": "string"
+}
+````
+
+**Registrar Tópico**: Para registrar un tópico se usa en la ruta `http://localhost:8080/topicos` con el verbo POST y con la siguiente estructura JSON como ejemplo:
+````
+{
+  "titulo": "string",
+  "mensaje": "string",
+  "fechaCreacion": "2025-01-24T01:06:20.582Z",
+  "estado": "string",
+  "autor": "string",
+  "curso": "string"
+}
+````
+
+**Listar Tópicos**: Para mostrar todos los tópicos se usa la ruta `http://localhost:8080/topicos` con el verbo GET y todos los tópicos se muestra con la misma estructura JSON como en Registrar Tópico.
+
+**Listar un Tópico**: Para mostrar un tópico se usa la ruta `http://localhost:8080/topicos/{id}` con el verbo GET y con el id del tópico en específico, y como resultado dicho tópico se muestra con la misma estructura JSON como en Registrar Tópico.
+
+**Actualizar un Tópico**: Para actualizar un tópico se usa la ruta `http://localhost:8080/topicos` con el verbo PUT, copiando un tópico registrado y pegándolo en el body de la herramienta para simular el cliente. Se puede modificar cualquier dato del tópico, menos el id ya que es un número único y también no se puede duplicar algún dato de un tópico registrado.
+
+**Eliminar un Tópico**: Para eliminar un tópico se usa la ruta `http://localhost:8080/topicos/{id}` con el verbo DELETE, y con el id del tópico en específico, y como resultado dicho tópico se elimina de la base de datos. Ese tópico eliminado no se mostrará en las rutas para mostrar tópicos y mostrar un tópico.
+
+# Acceso al Proyecto
+
+1. Crear sólo la base de datos en MySQL Workbench
+2. Crear una carpeta y clonar el repositorio en la terminal o en Git Bash con el siguiente comando:
+
+    `git clone https://github.com/SergioZF09/foro-hub.git`
+
+3. Ir a dicha carpeta y abrirla con el IDE preferido (por ejemplo IntelliJ IDEA)
+4. Configurar el archivo application.properties para que se conecte la aplicación a la base de datos.
+
     Se deben modificar las siguientes variables por las variables que tu tengas:
 
     `${DATASOURCE_URL}, ${DATASOURCE_USERNAME}, ${DATASOURCE_PASSWORD} y ${JWT_SECRET}`
@@ -69,12 +119,9 @@ Se debe usar alguna herramienta/aplicación como Postman o Insomnia Rest para si
 
     Y en JWT_SECRET es la contraseña que se usa para el inicio de sesión.
 
-Se deben modificar las siguientes variables por las variables que tu tengas:
-7. **Respuestas con códigos HTTP**: Al realizar alguna operación CRUD en Postman o Insomnia, muestra su código HTTP correcto, por ejemplo, al crear un tópico devuelve 201, si no existe un tópico devuelve 404, etc.
-8. **Seguridad en operaciones CRUD**: La aplicación tiene Spring Security para que los usuarios que no iniciaron sesión no puedan usar las operaciones CRUD.
-9. **Inicio de sesión (Login)**: Inicia sesión ingresando el nombre de usuario y la contraseña, y al enviarlos devuelve un JWT Token con el cual podrá usar las operaciones CRUD.
-
-    ⚠️ Importante: Es necesario introducir la información del usuario en la base de datos para realizar correctamente el login. Y para introducir la contraseña encriptada se debe usar la siguiente página: [Bcrypt Encrypt](https://www.browserling.com/tools/bcrypt), donde dice Password introduce la contraseña a usar, dar click en Bcrypt y en el campo cuadrado mostrará dicha contraseña ya encriptada.
+5. Y por último inicar el proyecto para que arranque el servidor y puedas usarlo con Postman o Insomnia Rest.
+6. Para usar la documentación Swagger puedes acceder al siguiente enlace:
+`http://localhost:8080/swagger-ui/index.html`
 
 # Teconologías utilizadas 🔨
 
@@ -88,6 +135,7 @@ Se deben modificar las siguientes variables por las variables que tu tengas:
 - Flyway Migration
 - Validation
 - Spring Security
+- Spring Doc
 - Postman o Insomnia Rest para la simulación del cliente
 - MySQL Workbench
 
